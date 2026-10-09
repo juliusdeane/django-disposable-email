@@ -1,0 +1,132 @@
+# django-disposable-email, traducción al español.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: django-disposable-email 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-09 01:16-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:7
+msgid "Disposable email"
+msgstr "Emails desechables"
+
+#: enforce.py:18
+msgid ""
+"Disposable or temporary email addresses are not allowed. Please use a "
+"permanent email address."
+msgstr "No se permiten direcciones de email temporales o desechables. Usa una dirección de email permanente."
+
+#: models.py:18
+msgid "block disposable emails"
+msgstr "bloquear emails desechables"
+
+#: models.py:22 models.py:23
+msgid "configuration"
+msgstr "configuración"
+
+#: models.py:26
+msgid "Enabled"
+msgstr "Activado"
+
+#: models.py:26
+msgid "Disabled"
+msgstr "Desactivado"
+
+#: models.py:50
+msgid "Block"
+msgstr "Bloquear"
+
+#: models.py:50
+msgid "Allow"
+msgstr "Permitir"
+
+#: models.py:52 models.py:103
+msgid "domain"
+msgstr "dominio"
+
+#: models.py:53
+msgid "Without @, e.g. example.com (covers its subdomains)"
+msgstr "Sin @, p. ej. ejemplo.com (incluye sus subdominios)"
+
+#: models.py:54
+msgid "action"
+msgstr "acción"
+
+#: models.py:55 models.py:104
+msgid "reason"
+msgstr "motivo"
+
+#: models.py:56
+msgid "active"
+msgstr "activo"
+
+#: models.py:61
+msgid "domain rule"
+msgstr "regla de dominio"
+
+#: models.py:62
+msgid "domain rules"
+msgstr "reglas de dominio"
+
+#: models.py:86
+msgid "domains"
+msgstr "dominios"
+
+#: models.py:86
+msgid "One per line"
+msgstr "Uno por línea"
+
+#: models.py:87
+msgid "number of domains"
+msgstr "número de dominios"
+
+#: models.py:88
+msgid "sources"
+msgstr "fuentes"
+
+#: models.py:89
+msgid "downloaded at"
+msgstr "descargada el"
+
+#: models.py:92 models.py:93
+msgid "downloaded list"
+msgstr "lista descargada"
+
+#: models.py:102
+msgid "email"
+msgstr "email"
+
+#: models.py:105
+msgid "where"
+msgstr "dónde"
+
+#: models.py:106
+msgid "IP address"
+msgstr "dirección IP"
+
+#: models.py:107
+msgid "user agent"
+msgstr "navegador"
+
+#: models.py:108
+msgid "when"
+msgstr "cuándo"
+
+#: models.py:111
+msgid "blocked attempt"
+msgstr "intento bloqueado"
+
+#: models.py:112
+msgid "blocked attempts"
+msgstr "intentos bloqueados"

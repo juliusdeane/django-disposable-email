@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "django-disposable-email"
+version = "1.0.0"
+description = "Block disposable email domains at signup in Django and django-allauth, switchable by environment or by a database flag."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Román Ramírez", email = "rramirez@rootedcon.com" }]
+requires-python = ">=3.10"
+classifiers = [
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.2",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+dependencies = [
+    "Django>=4.2",
+    "disposable-email-domains>=0.0.100",
+    "requests>=2.28",
+]
+
+[project.optional-dependencies]
+allauth = ["django-allauth>=65.0"]
+celery = ["celery>=5.3"]
+
+[project.urls]
+Changelog = "https://github.com/patowc/django-disposable-email/blob/main/CHANGES.md"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-django>=4.9",
+    "django-allauth>=65.0",
+    "celery>=5.3",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/disposable_email"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/disposable_email", "tests", "README.md", "CHANGES.md", "LICENSE"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
+pythonpath = ["."]
+testpaths = ["tests"]
