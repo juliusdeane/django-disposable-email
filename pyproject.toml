@@ -31,6 +31,9 @@ allauth = ["django-allauth>=65.0"]
 celery = ["celery>=5.3"]
 
 [project.urls]
+Homepage = "https://github.com/juliusdeane/django-disposable-email"
+Repository = "https://github.com/juliusdeane/django-disposable-email"
+Issues = "https://github.com/juliusdeane/django-disposable-email/issues"
 Changelog = "https://github.com/juliusdeane/django-disposable-email/blob/main/CHANGES.md"
 
 [dependency-groups]

@@ -351,7 +351,7 @@ Si en el shell está activo el venv de otro proyecto, `uv` avisa
     (en los dos sitios);
   - entrada en `CHANGES.md` con fecha.
 - **Publicación:** la hace SIEMPRE Román, con `uv build && uv publish`. Lo
-  mismo para el repo en GitHub (`github.com/patowc/django-disposable-email`,
+  mismo para el repo en GitHub (`github.com/juliusdeane/django-disposable-email`,
   pendiente de crear) y para etiquetas y commits: Claude no hace ninguna
   operación git de escritura (regla global).
 
