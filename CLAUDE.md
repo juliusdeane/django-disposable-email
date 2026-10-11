@@ -246,9 +246,9 @@ proyecto se ignoran).
 
 1. Dependencia `django-disposable-email[allauth,celery]>=1.0.0`, o sin
    `celery` si el proyecto no lo usa.
-   - Mientras no esté en PyPI: `[tool.uv.sources] django-disposable-email =
-     { path = "../django-disposable-email", editable = true }`.
-   - Esa línea hay que QUITARLA antes de desplegar: Coolify y Docker no ven `../`.
+   - Se instala desde PyPI (publicado el 2026-10-09). No usar una fuente
+     `path = "../django-disposable-email"` salvo para probar un cambio local
+     del paquete, y quitarla antes de desplegar: Coolify y Docker no ven `../`.
 2. Añadir `"disposable_email"` a `INSTALLED_APPS`.
 3. `DISPOSABLE_EMAIL = {"ENABLED": ...}` según el proyecto:
    - entorno: `env.bool("DISPOSABLE_EMAIL_ENABLED", default=True)`, y la
@@ -281,7 +281,17 @@ proyecto se ignoran).
 
    Referencia: `scenariumit/accounts/tests/test_disposable_email.py`.
 
-Integrado hasta ahora: **ScenariumIT** (2026-10-09, por entorno).
+Integrado (2026-10-09, sin commitear en cada proyecto hasta que Román lo revise):
+**ScenariumIT**, **Taska**, **ReciBRO**, **EasyContract**, **Taxiquo** y
+**Attentiometer** (interruptor por entorno), **RootedArbiter** (función que lee
+`SERVERConfiguration.disposable_email_block_enabled`; cron por HTTP, sin Celery).
+En RootedArbiter el bloqueo está DESACTIVADO por defecto y se activa a mano en
+`/main/admin/status` (Román, 2026-10-10); es la única excepción al «encendido
+por defecto» del paquete. Motivo: su sector cliente es muy sensible con la
+privacidad y mucha gente usa direcciones desechables o de reenvío a propósito.
+Pero el email PROFESIONAL de los registros a actividades se valida SIEMPRE,
+con el interruptor apagado y aunque ya conste (`check_email(force=True)` +
+`record_blocked` en `core/disposable_email_guard.py`).
 
 ---
 
@@ -378,10 +388,19 @@ Si en el shell está activo el venv de otro proyecto, `uv` avisa
 
 ## 11. Pendiente / ideas
 
-- Publicar 1.0.0 en PyPI y crear el repo en GitHub. Después, quitar la
-  fuente `path` de ScenariumIT.
-- Migrar ReciBRO, Taxiquo, Taska, EasyContract y Attentiometer al tocarlos
-  (§8). Integrarlo en RootedArbiter con el interruptor en `SERVERConfiguration`.
+- ~~Publicar 1.0.0 en PyPI~~ HECHO (2026-10-09, la publicó Román;
+  ScenariumIT ya lo instala desde PyPI). Falta crear el repo en GitHub
+  (`github.com/juliusdeane/django-disposable-email`); los enlaces de PyPI
+  apuntan ahí.
+- ~~Migrar ReciBRO, Taxiquo, Taska, EasyContract y Attentiometer e integrarlo
+  en RootedArbiter~~ HECHO el 2026-10-09 (§7).
+- allauth headless: Taxiquo expone `allauth.headless` y sus endpoints de alta
+  y gestión de email no pasan por `ACCOUNT_FORMS`, así que el mixin no actúa;
+  la señal social sí, pero responde con un 302 en vez de un error JSON.
+  Candidato a 1.1.0.
+- `enforce(..., force=True)` para validaciones obligatorias que ignoran el
+  interruptor (hoy RootedArbiter lo monta a mano con `check_email(force=True)`
+  y `record_blocked`). Candidato a 1.1.0.
 - Posibles mejoras, a decidir con Román (ninguna implementada):
   - comprobación MX opcional, para dominios nuevos que aún no están en la lista;
   - más fuentes de listas;
